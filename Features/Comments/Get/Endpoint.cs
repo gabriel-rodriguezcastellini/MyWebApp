@@ -2,7 +2,7 @@
 
 namespace MyWebApp.Features.Comments.Get;
 
-internal sealed class Endpoint : Endpoint<Request, Response>
+internal sealed class Endpoint : EndpointWithoutRequest<Response>
 {
     public override void Configure()
     {
@@ -11,11 +11,8 @@ internal sealed class Endpoint : Endpoint<Request, Response>
         _ = Route<string>("CommentID", isRequired: false);
     }
 
-    public override Task HandleAsync(Request req, CancellationToken ct)
+    public override Task HandleAsync(CancellationToken ct)
     {
-        return SendOkAsync(new()
-        {
-            CommentID = req.CommentID
-        }, ct);
+        return SendOkAsync(new() { CommentID = "" }, ct);
     }
 }

@@ -16,9 +16,3 @@ internal sealed class Validator : Validator<Request>
 
     }
 }
-
-internal sealed class Response
-{
-    public required string FullName { get; set; }
-    public bool IsOver18 { get; set; }
-}

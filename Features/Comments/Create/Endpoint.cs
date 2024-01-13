@@ -2,7 +2,7 @@
 
 namespace MyWebApp.Features.Comments.Create;
 
-internal sealed class Endpoint : Endpoint<Request, Response>
+internal sealed class Endpoint : Endpoint<Request>
 {
     public override void Configure()
     {
@@ -12,10 +12,6 @@ internal sealed class Endpoint : Endpoint<Request, Response>
 
     public override Task HandleAsync(Request req, CancellationToken ct)
     {
-        return SendOkAsync(new()
-        {
-            FullName = req.FirstName + " " + req.LastName,
-            IsOver18 = req.Age > 18
-        }, ct);
+        return SendOkAsync(ct);
     }
 }
